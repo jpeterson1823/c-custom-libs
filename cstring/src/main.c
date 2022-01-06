@@ -17,12 +17,12 @@ int main() {
 	cString.namedPrint(joined, "joined");
 	cString.destroy(joined);
 
-	printf("Reusing pointers\n");
-	cstring* s3 = cString.create("Delimited", 9);
-	cstring* s4 = cString.create("String", 8);
-	joined = cString.delimitedJoin(s3, s4, ' ');
-	cString.destroy(s3);
-	cString.destroy(s4);
+	printf("Delimited Join\n");
+	s1 = cString.create("a", 1);
+	s2 = cString.create("b", 1);
+	joined = cString.delimitedJoin(s1, s2, ' ');
+	cString.destroy(s1);
+	cString.destroy(s2);
 	cString.print(joined);
 	cString.destroy(joined);
 

@@ -25,6 +25,7 @@ cstring* __cstr_create(char* str, int len) {
 void __cstr_destroy(cstring* cstr) {
 	free((char*)cstr->arr);
 	free(cstr);
+	cstr = NULL;
 }
 
 cstring* __cstr_copy(cstring* cstr) {
@@ -50,6 +51,8 @@ cstring* __cstr_join(cstring* cstr1, cstring* cstr2) {
 
 cstring* __cstr_delimited_join(cstring* cstr1, cstring* cstr2, char delimiter) {
 	cstring* joined = malloc(sizeof(cstring));
+	joined->len = cstr1->len + cstr2->len + 1;
+	
 	int j = 0;
 	char* arr = malloc(sizeof(char) * (cstr1->len + cstr2->len + 2));
 	for (int i = 0; i < cstr1->len; i++)
@@ -78,5 +81,6 @@ cstring_interface cString = {
 	.copy = __cstr_copy,
 	.join = __cstr_join,
 	.print = __cstr_print,
-	.namedPrint = __cstr_named_print
+	.namedPrint = __cstr_named_print,
+	.delimitedJoin = __cstr_delimited_join
 };
