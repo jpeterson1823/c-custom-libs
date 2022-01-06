@@ -10,6 +10,7 @@ typedef struct _CSTRING_INTERFACE {
 	cstring* (*copy)(cstring* __cstr);
 	cstring* (*join)(cstring* cstr1, cstring* cstr2);
 	cstring* (*delimitedJoin)(cstring* cstr1, cstring* cstr2, char delimiter);
+	cstring* (*substr)(cstring* cstr1, int start, int end);
 	void (*print)(cstring* str);
 	void (*namedPrint)(cstring* str, char* name);
 } cstring_interface;

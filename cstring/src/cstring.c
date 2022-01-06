@@ -75,6 +75,13 @@ void __cstr_named_print(cstring* str, char* name) {
 	printf("%s: %s\tlen=%i\n", name, str->arr, str->len);
 }
 
+cstring* __cstr_substr(cstring* cstr, int start, int end) {
+	if (start >= 0 && end <= cstr->len)
+		return cString.create((char*)&cstr->arr[start], end - start);
+	else
+		return NULL;
+}
+
 cstring_interface cString = {
 	.create = __cstr_create,
 	.destroy = __cstr_destroy,
@@ -82,5 +89,6 @@ cstring_interface cString = {
 	.join = __cstr_join,
 	.print = __cstr_print,
 	.namedPrint = __cstr_named_print,
-	.delimitedJoin = __cstr_delimited_join
+	.delimitedJoin = __cstr_delimited_join,
+	.substr = __cstr_substr
 };
