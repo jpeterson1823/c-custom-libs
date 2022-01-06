@@ -41,5 +41,19 @@ int main() {
 	cString.destroy(s1);
 	cString.destroy(s2);
 
+	printf("String to Int\n");
+	test = cString.create("332", 3);
+	int i = cString.toi(test);
+	printf("toi: %i\n", i);
+	cString.destroy(test);
+
+	printf("Stripping\n");
+	test = cString.create("  test  ", 8);
+	s1 = cString.strip(test);
+	cString.print(s1);
+	printf("Stripped: '%s'\n", s1->arr);
+	cString.destroy(s1);
+	cString.destroy(test);
+
 	return 0;
 }

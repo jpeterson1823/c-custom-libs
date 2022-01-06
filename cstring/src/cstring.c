@@ -82,6 +82,33 @@ cstring* __cstr_substr(cstring* cstr, int start, int end) {
 		return NULL;
 }
 
+cstring* __cstr_strip(cstring* cstr) {
+	int start = -1;
+	int end = -1;
+	for (int i = 0; i < cstr->len; i++) {
+		char ch = cstr->arr[i];
+		if (start == -1 && (ch != ' ' && ch != '\n'))
+			start = i;
+		if (start != -1 && end == -1 && (ch == ' ' || ch == '\n'))
+			end = i;
+	}
+	if (end == -1)
+		end = cstr->len;
+
+	return cString.substr(cstr, start, end);
+}
+
+int __cstr_toi(cstring* cstr) {
+	int n = 0;
+	for (int i = 0; i < cstr->len; i++) {
+		n += (cstr->arr[i] - '0');
+		if (i < cstr->len - 1)
+			n*=10;
+	}
+	return n;
+}
+
+
 cstring_interface cString = {
 	.create = __cstr_create,
 	.destroy = __cstr_destroy,
@@ -90,5 +117,7 @@ cstring_interface cString = {
 	.print = __cstr_print,
 	.namedPrint = __cstr_named_print,
 	.delimitedJoin = __cstr_delimited_join,
-	.substr = __cstr_substr
+	.substr = __cstr_substr,
+	.toi = __cstr_toi,
+	.strip = __cstr_strip
 };
