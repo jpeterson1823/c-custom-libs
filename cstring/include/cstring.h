@@ -9,10 +9,13 @@ typedef struct _CSTRING_INTERFACE {
 	void (*destroy)(cstring* cstr);
 	cstring* (*copy)(cstring* __cstr);
 	cstring* (*join)(cstring* cstr1, cstring* cstr2);
+	cstring* (*delimitedJoin)(cstring* cstr1, cstring* cstr2, char delimiter);
+	void (*print)(cstring* str);
+	void (*namedPrint)(cstring* str, char* name);
 } cstring_interface;
 
 struct _CSTRING {
-	char* arr;
+	const char* arr;
 	int len;
 };
 
