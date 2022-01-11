@@ -108,6 +108,21 @@ int __cstr_toi(cstring* cstr) {
 	return n;
 }
 
+cstring** __cstr_split(cstring* str, char delimiter) {
+	// get index of delimiter
+	int index;
+	for (index = 0; index < str->len; index++)
+		if (str->arr[index] == delimiter)
+			break;
+
+	// split the string in two along the first found delimiter
+	cstring** split = malloc(sizeof(cstring*) * 2);
+	split[0] = cString.substr(str, 0, index);
+	split[1] = cString.substr(str, index+1, str->len);
+
+	return split;
+}
+
 
 cstring_interface cString = {
 	.create = __cstr_create,
@@ -119,5 +134,6 @@ cstring_interface cString = {
 	.delimitedJoin = __cstr_delimited_join,
 	.substr = __cstr_substr,
 	.toi = __cstr_toi,
-	.strip = __cstr_strip
+	.strip = __cstr_strip,
+	.split = __cstr_split
 };

@@ -15,6 +15,7 @@ typedef struct _CSTRING_INTERFACE {
 	int (*toi)(cstring* cstr);
 	void (*print)(cstring* str);
 	void (*namedPrint)(cstring* str, char* name);
+	cstring** (*split)(cstring* cstr, char delimiter);
 } cstring_interface;
 
 struct _CSTRING {

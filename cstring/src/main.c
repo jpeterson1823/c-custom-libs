@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "../include/cstring.h"
 
 int main() {
@@ -40,6 +41,19 @@ int main() {
 	cString.destroy(test);
 	cString.destroy(s1);
 	cString.destroy(s2);
+	printf("\n");
+
+	printf("Split\n");
+	test = cString.create("123,456", 7);
+	cstring** split = cString.split(test, ',');
+	cString.namedPrint(test, "Original");
+	cString.namedPrint(split[0], "First Half");
+	cString.namedPrint(split[1], "Second Half");
+	cString.destroy(test);
+	cString.destroy(split[0]);
+	cString.destroy(split[1]);
+	free(split);
+	printf("\n");
 
 	printf("String to Int\n");
 	test = cString.create("332", 3);
