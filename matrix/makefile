@@ -9,7 +9,8 @@ matrix: $(SRC_DIR)/matrix.c $(SRC_DIR)/__matrix.c
 clean:
 	rm -f $(OBJ_DIR)/*
 
-lib:
+#lib: $(OBJ_DIR)/matrix.o $(OBJ_DIR)/__matrix.o
+lib: matrix
 	make matrix
 	ar -cvq libmatrix.a $(OBJ_DIR)/matrix.o $(OBJ_DIR)/__matrix.o
 
