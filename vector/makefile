@@ -8,7 +8,7 @@ vector: $(SRC_DIR)/vector.c
 clean:
 	rm -f $(OBJ_DIR)/*
 
-lib:
+lib: vector
 	make vector
 	ar -cvq libvector.a $(OBJ_DIR)/vector.o
 
