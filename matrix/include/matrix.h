@@ -10,7 +10,7 @@ typedef struct __MATRIX {
 } matrix;
 
 matrix* matrix_new(u_short width, u_short height);
-matrix* matrix_from_array(u_short width, u_short height, double* values, u_short length);
+matrix* matrix_from_array(u_short width, u_short height, double* values);
 matrix* matrix_copy(matrix* m);
 void    matrix_del(matrix* m);
 double  matrix_get(matrix* m, u_short row, u_short col);

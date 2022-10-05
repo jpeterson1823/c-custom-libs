@@ -10,20 +10,13 @@ matrix* matrix_new(u_short width, u_short height) {
     return m;
 }
 
-matrix* matrix_from_array(u_short width, u_short height, double* array, u_short length) {
-    // make sure there are enough elements in array to fully populate matrix
-    if (length != width*height) {
-        fprintf(stderr, "[MATRIX.ERROR] Attempted to create matrix from array without enough elements to populate said matrix.");
-        exit(1);
-    }
-
+matrix* matrix_from_array(u_short width, u_short height, double* array) {
     matrix* m = matrix_new(width, height);
     for (u_short row = 0; row < height; row++) {
         for (u_short col = 0; col < width; col++) {
             matrix_set(m, row, col, array[(row * width) + col]);
         }
     }
-
     return m;
 }
 

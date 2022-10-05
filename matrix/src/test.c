@@ -15,14 +15,14 @@ int main() {
 
 void test_create_from_array() {
     double array[9] = {6, 1, 1, 4, -2, 5, 2, 8, 7};
-    matrix* m = matrix_from_array(3, 3, (double*)array, 9);
+    matrix* m = matrix_from_array(3, 3, (double*)array);
     matrix_print(m);
     matrix_del(m);
 }
 
 void test_determinant() {
     double array[9] = {6, 1, 1, 4, -2, 5, 2, 8, 7};
-    matrix* m = matrix_from_array(3, 3, (double*)array, 9);
+    matrix* m = matrix_from_array(3, 3, (double*)array);
 
     matrix_print(m);
     printf("Determinant: %f\n", matrix_determinant(m));
